@@ -20,3 +20,8 @@ Feign的源码实现的过程如下：
 https://blog.de-swaef.eu/the-netflix-stack-using-spring-boot-part-3-feign/
 
 https://github.com/OpenFeign/feign
+
+
+Feign是自带断路器的，在D版本的Spring Cloud中，它没有默认打开。需要在配置文件中配置打开它，在配置文件加以下代码：
+
+feign.hystrix.enabled=true
