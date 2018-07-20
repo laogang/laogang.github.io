@@ -13,3 +13,10 @@ Feign的源码实现的过程如下：
 6. Request交给Client去处理，其中Client可以是HttpUrlConnection、HttpClient也可以是Okhttp
 
 7. 最后Client被封装到LoadBalanceClient类，这个类结合类Ribbon做到了负载均衡。
+
+
+参考资料：
+
+https://blog.de-swaef.eu/the-netflix-stack-using-spring-boot-part-3-feign/
+
+https://github.com/OpenFeign/feign
