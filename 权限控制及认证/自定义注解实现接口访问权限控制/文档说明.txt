@@ -10,7 +10,9 @@
       使用自定义注解作用到controller中的请求函数上，由于该应用系统只有3种角色，可以不需要把接口url和访问权限集合作为资源维护到数据库中，自定义注解
   拦截到请求后对请求做权限认证，认证不通过可以抛出业务异常，由全局异常处理捕获该异常返给前台。
  
-ps：具体实现代码参考同级目录。
+ps：
+  1.具体实现代码参考同级目录。
+  2.contoller 中在请求方法上添加该自定义注解 @AccessAuthorityAuthentication(accessAuthority="admin,buyer")
     
   
         
