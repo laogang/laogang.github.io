@@ -1,0 +1,28 @@
+Freemarker提供了3种加载模板目录的方法。 它使用Configuration类加载模板。
+
+三种方法分别是：
+
+public void setClassForTemplateLoading(Class clazz, String pathPrefix);
+
+public void setDirectoryForTemplateLoading(File dir) throws IOException;
+
+public void setServletContextForTemplateLoading(Object servletContext, String path);
+
+
+第一种：基于类路径，HttpWeb包下的framemaker.ftl文件
+  configuration.setClassForTemplateLoading(this.getClass(), "/HttpWeb");
+
+  configuration.getTemplate("framemaker.ftl"); //framemaker.ftl为要装载的模板 
+第二种：基于文件系统
+
+  configuration.setDirectoryForTemplateLoading(new File("/template"))
+
+  configuration.getTemplate("framemaker.ftl"); //framemaker.ftl为要装载的模板
+
+第三种：基于Servlet Context，指的是基于WebRoot下的template下的framemaker.ftl文件
+
+  HttpServletRequest request = ServletActionContext.getRequest();
+
+  configuration.setServletContextForTemplateLoading(request.getSession().getServletContext(), "/template");
+
+  configuration.getTemplate("framemaker.ftl"); //framemaker.ftl为要装载的模板
