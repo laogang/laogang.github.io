@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface AccessAuthorityAuthentication {
-	 String accessAuthority() default "";
+	 String[] accessAuthority() default "";
 }
