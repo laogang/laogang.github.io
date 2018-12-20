@@ -1,0 +1,10 @@
+第一步：获取正在允许的容器id
+  docker ps
+第二步：获取容器/镜像的元数据
+  docker inspect 容器id
+第三步：使用exec 命令进入容器（docker 1.3.x 版本提供的命令）
+   docker exec -it 容器id/容器名字  /bin/bash
+
+PS:
+  退出容器且不关闭 ctrl + p + q
+  退出容器且关闭   ctrl + d
