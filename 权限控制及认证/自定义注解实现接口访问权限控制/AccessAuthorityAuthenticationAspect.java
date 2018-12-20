@@ -1,6 +1,5 @@
 package com.sh.guog.aspect;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,9 +7,13 @@ import javax.security.sasl.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -20,6 +23,8 @@ import com.sh.guog.annotation.AccessAuthorityAuthentication;
 @Aspect
 @Component
 public class AccessAuthorityAuthenticationAspect {
+
+	private Logger logger = LoggerFactory.getLogger(AccessAuthorityAuthenticationAspect.class);
 
 	// Controller层切点
 	@Pointcut("@annotation(com.sh.guog.annotation.AccessAuthorityAuthentication)")
@@ -40,8 +45,18 @@ public class AccessAuthorityAuthenticationAspect {
 		// 请求的用户角色
 		System.out.println(request.getRequestURL());
 		String userRole = request.getHeader("userRole");
-		String accessAuthority = getControllerMethodDescription(joinPoint);
-		String[] accessAuthorities = accessAuthority.split(",");
+		String[] accessAuthorities = ((AccessAuthorityAuthentication) ((MethodSignature) joinPoint.getSignature())
+				.getMethod().getAnnotation(AccessAuthorityAuthentication.class)).accessAuthority();
+
+		Object[] objs = joinPoint.getArgs();
+		StringBuffer sb = null;
+		if (objs != null && objs.length > 0) {
+			sb = new StringBuffer();
+			for (int i = 0, n = objs.length; i < n; i++) {
+				sb.append(objs[i]);
+			}
+		}
+		logger.info("current user role is {}; request parameters are {}", userRole, sb);
 		if (accessAuthorities != null && accessAuthorities.length > 0) {
 			List<String> list = Arrays.asList(accessAuthorities);
 			if (list.contains(userRole)) {
@@ -54,31 +69,14 @@ public class AccessAuthorityAuthenticationAspect {
 	}
 
 	/**
-	 * 获取注解中对方法的描述信息 用于Controller层注解
-	 *
+	 * 接口正常处理完业务请求触发
+	 * 
 	 * @param joinPoint
-	 *            切点
-	 * @return 方法描述
-	 * @throws Exception
+	 * @param result
 	 */
-	@SuppressWarnings("rawtypes")
-	public static String getControllerMethodDescription(JoinPoint joinPoint) throws Exception {
-		String targetName = joinPoint.getTarget().getClass().getName();
-		String methodName = joinPoint.getSignature().getName();
-		Object[] arguments = joinPoint.getArgs();
-		Class targetClass = Class.forName(targetName);
-		Method[] methods = targetClass.getMethods();
-		String accessAuthority = "";
-		for (Method method : methods) {
-			if (method.getName().equals(methodName)) {
-				Class[] clazzs = method.getParameterTypes();
-				if (clazzs.length == arguments.length) {
-					accessAuthority = method.getAnnotation(AccessAuthorityAuthentication.class).accessAuthority();
-					break;
-				}
-			}
-		}
-		return accessAuthority;
+	@AfterReturning(returning = "result", pointcut = "controllerAspect()")
+	public void after(JoinPoint joinPoint, Object result) {
+		logger.info("return result are {}", result);
 	}
 
 }
