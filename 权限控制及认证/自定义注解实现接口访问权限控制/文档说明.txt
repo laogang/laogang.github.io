@@ -13,6 +13,8 @@
 ps：
   1.具体实现代码参考同级目录。
   2.contoller 中在请求方法上添加该自定义注解 @AccessAuthorityAuthentication(accessAuthority = { "admin", "buyer" })
+  3.打印log日志时需要注意接口传入参数是对象的时候，该对象必须重写toString方法，统一日志格式。
+
     
   
         
