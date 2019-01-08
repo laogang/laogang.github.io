@@ -13,3 +13,6 @@
       非全局关闭：JSON.toJSONString(obj, SerializerFeature.DisableCircularReferenceDetect);
       
 官方wiki地址:   https://github.com/alibaba/fastjson/wiki/%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8
+
+
+
