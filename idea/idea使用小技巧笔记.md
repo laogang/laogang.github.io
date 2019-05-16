@@ -6,7 +6,7 @@
 
 [TOC]
 
-## 1.Intellij IDEA 文件修改提示星号
+## 1.Intellij IDEA文件修改提示星号
 
 ```properties
 Eclipse中文件修改后没有保存前文件都会有星号提示，IntelljJ IDEA默认没有提示，但是可以通过如下设置完成
@@ -21,7 +21,7 @@ IDEA 默认的文件打开后 Tabs Placement 是 None，可以通过如下设置完成
 Window -> Editor Tabs -> Tabs Placement: Top
 ```
 
-## 3.Intellij IDEA 自动清除无效 import 和 清除无效 import 的快捷键
+## 3.Intellij IDEA自动清除无效 import 和 清除无效 import 的快捷键
 
 ```properties
 快捷键  
