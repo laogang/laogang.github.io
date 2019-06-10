@@ -31,3 +31,15 @@ File -> Settings -> Editor -> General -> Auto Import -Java，勾选optimize imports
 在当前项目下会自动清除无效的import，而且这个是随时自动清除的。
 ```
 
+## 4.Intellij IDEA配置git
+
+```properties
+idea在没有集成版本管理工具时 Version Control 是禁用的，可以通过如下设置集成git
+1. Settings -> Version Control -> Git  添加 Path to Git executable     **\cmd\git.exe (具体安装路径)，并点击 Test 确认是否安装成功。
+2. 在VCS 下设置当前项目使用版本关联工具。
+VCS -> Enable Version Control Integration  下拉选择Git，
+设置完成后在右键确认是否有Git选项。
+
+
+```
+
