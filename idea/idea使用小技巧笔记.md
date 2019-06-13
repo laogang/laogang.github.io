@@ -43,3 +43,10 @@ VCS -> Enable Version Control Integration  下拉选择Git，
 
 ```
 
+## 5.Intellij IDEA设置鼠标移动到类上自动显示Javadoc文档 
+
+```properties
+File -> Settings -> Editor -> General -> 勾选 Show quick documentation on mouse move 
+也可设置 delay 延时时间
+```
+
