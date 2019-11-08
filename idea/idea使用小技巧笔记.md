@@ -50,3 +50,11 @@ File -> Settings -> Editor -> General -> 勾选 Show quick documentation on mouse 
 也可设置 delay 延时时间
 ```
 
+## 6.Intellij IDEA用快捷键自动生成序列化id
+
+```properties
+类继承了Serializable接口之后，使用alt+enter快捷键自动创建序列化id 
+
+File -> Settings -> Editor -> Inspections -> serialization issues→选择图中的选项。serializable class without ‘serialVersionUID’
+```
+
