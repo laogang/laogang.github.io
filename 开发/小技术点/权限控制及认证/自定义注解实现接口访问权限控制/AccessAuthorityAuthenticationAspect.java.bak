@@ -43,7 +43,7 @@ public class AccessAuthorityAuthenticationAspect {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		// 请求的用户角色
-		logger.info(request.getRequestURL());
+		System.out.println(request.getRequestURL());
 		String userRole = request.getHeader("userRole");
 		String[] accessAuthorities = ((AccessAuthorityAuthentication) ((MethodSignature) joinPoint.getSignature())
 				.getMethod().getAnnotation(AccessAuthorityAuthentication.class)).accessAuthority();
