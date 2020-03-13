@@ -20,10 +20,9 @@
 ## 3.设置redis服务：
 
 ```
-  1.由于上面虽然启动了redis，但是只要一关闭cmd窗口，redis就会消失。所以要把redis设置成windows下的服务。
+   1.由于上面虽然启动了redis，但是只要一关闭cmd窗口，redis就会消失。所以要把redis设置成windows下的服务。
 
-     2.执行如下命令  redis-server –-service-install redis.windows-service.conf –-loglevel verbose 
-
+   2.执行如下命令  redis-server –-service-install redis.windows-service.conf –-loglevel verbose 
 没有报错，刷新下 “我的电脑”-“管理”-“服务” 列表，会发现多了一个 Redis 服务。
 
 ```
@@ -33,9 +32,9 @@
 ```
  卸载服务：redis-server –-service-uninstall
 
-      开启服务：redis-server –-service-start
+ 开启服务：redis-server –-service-start
 
-      停止服务：redis-server –-service-stop
+ 停止服务：redis-server –-service-stop
 
 ```
 
