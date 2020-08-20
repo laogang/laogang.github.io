@@ -11,8 +11,10 @@
 
 ```java
     @Value("#{'${skip.url}'.split(',')}")
-
     private List<String> urls;
+
+    @Value("${skip.url}")
+    private String[] urls;
 
 ```
 
