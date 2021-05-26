@@ -58,3 +58,16 @@ File -> Settings -> Editor -> General -> 勾选 Show quick documentation on mouse 
 File -> Settings -> Editor -> Inspections -> serialization issues→选择图中的选项。serializable class without ‘serialVersionUID’
 ```
 
+## 7.Intellij IDEA设置java文件模板
+
+```properties
+File -> Settings -> Editor -> File and Code Templates  选择 Includes Tab下的 File Header
+
+/**  
+  * @version 1.0.0  
+  * @author: guog
+  * @date  ${DATE} ${TIME}
+  * @description
+  */ 
+```
+

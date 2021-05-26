@@ -34,10 +34,11 @@ eg:
 2.刚刚push，要修改最近一个push的commit信息，使用git commit --amend；
 同上。
 
-3.修改历史push的commit信息，使用git rebase -i HEAD~n【其中的n为记录数】，进入编辑界面
-需要修改的那个将 pick 改成 edit，保存并退出；再次查看git log，选中的已经变成最新的提交；
-git commit --amend 后编辑信息，保存并退出；再次查看log，查看仓库状态，根据提示使用
-git rebase --continue，最后git push提交。
+3.修改历史push的commit信息，使用git rebase -i HEAD~n【其中的n为记录数（自上向下计数从1开始）】，进入编辑界面
+需要修改的那个将 pick 改成 edit，保存并退出；
+再次查看git log，选中的已经变成最新的提交；
+git commit --amend 后编辑信息，保存并退出；
+再次查看log，查看仓库状态，根据提示使用 git rebase --continue，最后git push提交。
 
 注意：
 其中1、2两种情况的修改方式是一样的，但是git log的记录是不同的
