@@ -8,7 +8,7 @@
 
 [TOC]
 
-## 1.配置本地全局.gitignore
+## 1. 配置本地全局.gitignore
 
 ```properties
 1.在本地用户目录下设置.ignore文件，此文件中写有你想忽略的内容 
@@ -24,7 +24,7 @@ eg:
 
 
 
-## 2.修改commit信息
+## 2. 修改commit信息
 
 ```properties
 修改commit信息主要有这几种情况
@@ -43,5 +43,18 @@ git commit --amend 后编辑信息，保存并退出；
 注意：
 其中1、2两种情况的修改方式是一样的，但是git log的记录是不同的
 第三种方式也是把需要修改的记录调整为最新的提交，然后使用2的方式修改
+```
+
+## 3. 解决IDEA配置.gitignore不生效的问题
+
+```properties
+.gitignore只能忽略未被track的文件，而git本地缓存。如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。
+
+解决方法就是先把本地缓存删除（改变成未track状态），然后再提交。
+
+
+git rm -r --cached .
+git add .
+git commit -m 'update .gitignore'
 ```
 
