@@ -38,9 +38,12 @@
 
 ```
 
-##  5.redis中文网:  
+##  5.redi官网:  
 
 ```http
-     http://www.redis.net.cn/
+  中文网： http://www.redis.cn
+  英文网： https://www.redis.io
+  
+  ps: 一般redis英文网站版本更新比中文版本快
 ```
 
