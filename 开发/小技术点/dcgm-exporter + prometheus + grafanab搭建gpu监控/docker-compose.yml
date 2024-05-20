@@ -1,0 +1,49 @@
+version: "3.3"
+
+services:
+  dcgm-exporter:
+    image: nvidia/dcgm-exporter:2.0.13-2.1.1-ubuntu18.04
+    privileged: true
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - "9400:9400"
+    networks:
+      - backend  
+    restart: always
+
+  prometheus:
+    image: prom/prometheus:v2.30.3
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    ports:
+      - "9090:9090"
+    depends_on:
+      - dcgm-exporter
+    networks:
+      - backend      
+    restart: always
+
+  grafana:
+    image: grafana/grafana:8.1.2   
+    ports:
+      - "3000:3000"
+    volumes:
+      # 确保宿主机上的目录权限正确
+      - ./grafana/:/var/lib/grafana/:z
+      # Grafana Docker镜像中默认的用户和组ID
+    user: "472:472"
+    environment:
+    # 设置管理员密码
+      - GF_SECURITY_ADMIN_PASSWORD=123456
+      - GF_SERVER_ROOT_URL=http://172.31.36.28:3000
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_AUTH_ANONYMOUS_ORG_NAME=Main Org.
+    networks:
+      - backend
+    restart: always
+
+networks:
+  backend:
