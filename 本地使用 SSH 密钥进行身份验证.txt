@@ -1,0 +1,29 @@
+GitHub 于2021年8月13日停止支持使用密码进行身份验证的方式。
+
+解决此问题的方法是使用其他身份验证方式，比如使用 SSH 密钥进行身份验证。以下是一些步骤可以帮助您完成设置：
+
+生成 SSH 密钥：
+如果您还没有生成 SSH 密钥，请使用以下命令生成一个新的 SSH 密钥：
+
+bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+在提示中按回车键接受默认值，并设置一个安全的密码短语。将生成的公钥文件（通常为 id_rsa.pub）用于下一步。
+
+将 SSH 公钥添加到 GitHub 账户：
+登录到您的 GitHub 账户，然后转到 Settings > SSH and GPG keys。点击 "New SSH key"，将之前生成的公钥文件内容复制到相应的输入框中并保存。
+
+将远程仓库地址修改为 SSH URL：
+使用以下命令将远程仓库地址修改为 SSH URL：
+
+bash
+git remote set-url origin git@github.com:laogang/laogang.github.io.git
+再次尝试推送：
+现在，尝试再次执行 git push 命令进行推送，系统会使用 SSH 密钥进行身份验证。
+
+
+
+在 Windows 系统上，SSH 密钥文件通常位于 %USERPROFILE%\.ssh 目录下。您可以按照以下步骤找到它：
+
+打开资源管理器（Windows Explorer）。
+在地址栏中输入 %USERPROFILE%\.ssh 并按下 Enter 键。
+这将导航到存储 SSH 密钥的目录。如果您已经生成了 SSH 密钥，应该能够在该目录中找到 id_rsa.pub 文件。
