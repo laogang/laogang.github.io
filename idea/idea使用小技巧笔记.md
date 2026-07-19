@@ -71,3 +71,9 @@ File -> Settings -> Editor -> File and Code Templates  选择 Includes Tab下的 Fil
   */ 
 ```
 
+## 8.Intellij IDEA设置代码提示为忽略大小写
+
+```properties
+File -> Settings -> Editor -> General -> Code Completion 下 Match case 去掉勾选
+```
+

@@ -81,3 +81,30 @@ mybatis代码自动生成插件，大部分单表操作的代码可自动生成 
 https://www.cnblogs.com/quzhongren/p/11050880.html
 ```
 
+### 8. Translation  源码翻译插件
+
+```
+在 IDEA 插件市场（Settings > Plugins）中搜索 Translation 即可安装
+```
+
+### 9.RestfulTool2
+
+```
+RestfulTool2 是一款专为 IDEA 等 IDE 打造的 RESTful 服务开发辅助工具集，常被开发者用来替代 Postman 进行简单的接口调试。它主要支持 Spring 体系（Spring MVC/Spring Boot）和 JAX-RS 规范。
+安装方式：在 IDEA 中打开 Settings -> Plugins -> Marketplace，搜索 RestfulTool 或 RestfulToolkit 进行安装并重启即可。
+
+常用快捷键：
+全局 URL 查找定位：Ctrl + Alt + / 或 Ctrl + Alt + N。
+格式化 JSON 数据：Windows 为 Ctrl + Enter，Mac 为 Command + Enter。
+
+如果你使用的是 IDEA 2024.2 及以上版本，安装官方原版 RESTFul-Tool 可能会遇到无法使用的问题。针对这一情况，有以下几种解决方案：
+手动修改插件包：下载 RestfulTool2-2024.5.12.819.zip 插件包，解压后修改内部 plugin.xml 文件中的 idea-version 属性（去掉 until-build 限制），重新打包后再导入 IDEA 即可正常使用。
+注意快捷键冲突：重新安装或修改插件包后，部分快捷键可能会发生变化（例如全局查找可能变成 Ctrl + Alt + \），建议在设置中重新检查并绑定快捷键。
+K2 模式限制：高版本 IDEA 如果开启了 K2 模式，该插件目前不兼容，需要关闭 K2 模式才能正常启动。
+
+四、 同类插件对比建议
+如果你觉得 RestfulTool 功能过于基础，也可以考虑以下替代方案：
+RestfulBox：RestfulTool 的增强版，额外支持导出 Swagger 文档、本地 Mock 服务和更完善的 HTTP 测试。
+EasyApi / Apidog / Apifox：适合中大型项目和团队协作，提供一站式的 API 管理、文档同步、自动化测试和云端协作功能。
+```
+
